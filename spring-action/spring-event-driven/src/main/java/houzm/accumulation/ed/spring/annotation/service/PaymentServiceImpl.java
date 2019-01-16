@@ -1,9 +1,10 @@
-package houzm.accumulation.ed.spring.service;
+package houzm.accumulation.ed.spring.annotation.service;
 
-import houzm.accumulation.ed.spring.PaymentInfo;
-import houzm.accumulation.ed.spring.PaymentStatusEvent;
+import houzm.accumulation.ed.spring.xml.PaymentInfo;
+import houzm.accumulation.ed.spring.xml.PaymentStatusEvent;
 
 import java.util.UUID;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,9 @@ import org.springframework.stereotype.Service;
  * description:
  */
 @Service("paymentService")
-public class PaymentServiceImpl implements PaymentService, ApplicationEventPublisherAware {
+public class PaymentServiceImpl implements PaymentService {
 
+    @Autowired
     private ApplicationEventPublisher applicationEventPublisher;
 
     @Override
@@ -28,10 +30,5 @@ public class PaymentServiceImpl implements PaymentService, ApplicationEventPubli
                             new PaymentInfo(id,
                                     2, UUID.randomUUID().toString())));
         }
-    }
-
-    @Override
-    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
-        this.applicationEventPublisher = applicationEventPublisher;
     }
 }

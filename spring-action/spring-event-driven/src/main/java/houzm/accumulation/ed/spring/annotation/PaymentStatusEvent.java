@@ -1,4 +1,4 @@
-package houzm.accumulation.ed.spring;
+package houzm.accumulation.ed.spring.annotation;
 
 import org.springframework.context.ApplicationEvent;
 

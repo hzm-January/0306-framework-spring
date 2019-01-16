@@ -1,6 +1,4 @@
-package houzm.accumulation.ed.spring.service;
-
-import org.springframework.stereotype.Service;
+package houzm.accumulation.ed.spring.annotation.service;
 
 /**
  * author: hzm_dream@163.com

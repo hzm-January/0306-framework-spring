@@ -1,4 +1,4 @@
-package houzm.accumulation.ed.spring;
+package houzm.accumulation.ed.spring.xml;
 
 import java.util.concurrent.TimeUnit;
 import org.springframework.context.ApplicationListener;

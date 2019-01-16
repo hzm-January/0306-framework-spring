@@ -1,8 +1,5 @@
-package houzm.accumulation.ed.spring.service;
+package houzm.accumulation.ed.spring.xml.service;
 
-import java.util.UUID;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 import org.junit.Test;
@@ -10,6 +7,7 @@ import org.junit.Before;
 import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -21,8 +19,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @since <pre>01/16/2019</pre>
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringJUnitConfig(locations = "classpath*:ApplicationContext.xml")
+@SpringJUnitConfig(locations = "classpath:ApplicationContext.xml")
+@ActiveProfiles(value = "xml")
 public class PaymentServiceImplTest {
+
     @Autowired
     private PaymentService paymentService;
 
@@ -35,7 +35,7 @@ public class PaymentServiceImplTest {
     }
 
     /**
-     * Method: paymentSuccess(String message)
+     * Method: paymentSuccess(String message, String id)
      */
     @Test
     public void testPaymentSuccess() throws Exception {
@@ -63,13 +63,7 @@ public class PaymentServiceImplTest {
             System.out.println("---- time: " + time);
         }
 //        paymentService.paymentSuccess("success","1");
-    }
-
-    @Test
-    public void testPaymentSuccessHighCurrency() throws Exception {
-
-
-
+//TODO: Test goes here... 
     }
 
     /**

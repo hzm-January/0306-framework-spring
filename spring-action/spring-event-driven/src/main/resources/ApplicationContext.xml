@@ -5,14 +5,31 @@
        xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-    <!-- 配置 扫描-->
-    <context:component-scan base-package="houzm.accumulation.*"></context:component-scan>
-
-    <!-- 线程池 -->
+    <task:scheduler id="sheduler" pool-size="10"></task:scheduler>
     <task:executor id="ticketing-thread" pool-size="500"></task:executor>
+    <task:annotation-driven executor="ticketing-thread" scheduler="sheduler" proxy-target-class="true"></task:annotation-driven>
     <bean id="applicationEventMulticaster" class="org.springframework.context.event.SimpleApplicationEventMulticaster">
         <property name="taskExecutor" ref="ticketing-thread"></property>
     </bean>
+
+    <beans profile="xml">
+        <!-- 配置 扫描-->
+        <context:component-scan base-package="houzm.accumulation.ed.spring.xml"></context:component-scan>
+
+        <!-- 线程池 -->
+        <!--<task:executor id="ticketing-thread" pool-size="500"></task:executor>
+        <bean id="applicationEventMulticaster" class="org.springframework.context.event.SimpleApplicationEventMulticaster">
+            <property name="taskExecutor" ref="ticketing-thread"></property>
+        </bean>-->
+    </beans>
+
+    <beans profile="annotation">
+
+        <!-- 配置 扫描-->
+        <context:component-scan base-package="houzm.accumulation.ed.spring.annotation"></context:component-scan>
+        <!-- 线程池 -->
+
+    </beans>
 
 
 </beans>

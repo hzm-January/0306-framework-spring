@@ -1,4 +1,4 @@
-package houzm.accumulation.ed.spring;
+package houzm.accumulation.ed.spring.xml;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
