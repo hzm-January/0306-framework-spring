@@ -3,6 +3,7 @@
  */
 ext {
     junitVersion = "4.12"
+    lombokVersion = "1.18.4"
     mysqlVersion = "8.0.13"
     mybatisVersion = "3.4.6"
     springVersion = "5.1.4.RELEASE"
@@ -19,11 +20,12 @@ ext {
             beans  : "org.springframework:spring-beans:$springVersion",
             web    : "org.springframework:spring-web:$springVersion",
             webmvc : "org.springframework:spring-webmvc:$springVersion",
-
+            test   : "org.springframework:spring-test:$springVersion"
     ]
     common = [
             //junit: "group: '', name: 'junit', version: $junitVersion" --错误写法，识别不了
-            junit: "junit:junit:$junitVersion"
+            junit : "junit:junit:$junitVersion",
+            lombok: "org.projectlombok:lombok:$lombokVersion"
     ]
 }
 
@@ -41,6 +43,7 @@ configure(allprojects) {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
         options.encoding = "UTF-8"
+//        compileJava.options.compilerArgs += [ "-proc:only", ]
     }
 
     compileTestJava {
@@ -51,7 +54,7 @@ configure(allprojects) {
 
     repositories {
         mavenLocal();
-        jcenter();
+//        jcenter();
         mavenCentral();
     }
     configurations.all {
@@ -63,10 +66,13 @@ configure(allprojects) {
             //可添加额外配置
 
         }
+        compile(common.lombok) {}
+        annotationProcessor common.lombok
         compile(spring.core) {}
         compile(spring.context) {}
         compile(spring.aop) {}
         compile(spring.beans) {}
+        compile(spring.test) {}
     }
 
 }

@@ -6,7 +6,7 @@ import java.util.EventObject;
  * Author: hzm_dream@163.com
  * Date:  2019/1/14 21:49
  * Modified By:
- * Description：
+ * Description：事件
  */
 public class SourceEventObject extends EventObject {
     private int state;
